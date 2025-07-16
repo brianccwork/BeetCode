@@ -259,7 +259,7 @@
   }
 
   function updateProgressLabel() {
-    refs.progressLbl.textContent = `${solvedSet.size} / ${problems.length} solved`;
+    refs.progressLbl.textContent = `${solvedSet.size} / ${problems.length} Beet `;
     refs.title.style.opacity = solvedSet.has(problems[currentIdx].id) ? 0.4 : 1;
   }
 })();
