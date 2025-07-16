@@ -2,7 +2,7 @@
   "use strict";
 
   const DATA_URL = "data/problems.json";
-  const STORAGE_KEY = "leetcoach_solved";
+  const STORAGE_KEY = "BeetCode_solved";
   const BEET_ICON = "favicon/android-chrome-192x192.png";
 
   // helpers
@@ -130,7 +130,7 @@
 
     removeCongrats();
 
-    refs.title.textContent = `${p.leetcodeId}. ${p.title}`;
+    refs.title.textContent = `${p.idNum}. ${p.title}`;
     refs.diff.textContent = p.difficulty;
     refs.diff.className =
       "badge " +

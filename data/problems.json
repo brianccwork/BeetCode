@@ -1,27 +1,29 @@
 {
   "problems": [
     {
-      "id": "valid_palindrome",
+      "id": "mirror_phrase_check",
+      "idNum": 1,
       "leetcodeId": 125,
-      "title": "Valid Palindrome",
+      "source": "LeetCode",
+      "title": "Mirror Phrase Check",
       "difficulty": "Easy",
 
-      "description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non‑alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.\n\nGiven a string s, return true if it is a palindrome, or false otherwise.\n",
-      "example": "Example 1:\nInput: s = \"A man, a plan, a canal: Panama\"\nOutput: true\n\"amanaplanacanalpanama\" is a palindrome.\n\nExample 2:\nInput: s = \"race a car\"\nOutput: false\n\"raceacar\" is not a palindrome.\n\nExample 3:\nInput: s = \" \"\nOutput: true\nAn empty string reads the same forward and backward.\n",
-      "constraints": "Constraints:\n1 <= s.length <= 2 × 10^5",
+      "description": "A message is considered a *mirror phrase* if, after removing every character that is **not** a letter or digit and ignoring letter-case, it reads the same backward as forward.\n\nWrite a function that returns **true** when a given string meets this definition and **false** otherwise.",
+      "example": "Example 1:\nInput: msg = \"Race car!\"\nOutput: true\nExplanation: Cleanup ⇒ \"racecar\" which is symmetric.\n\nExample 2:\nInput: msg = \"hello world\"\nOutput: false\n\nExample 3:\nInput: msg = \"0P\"\nOutput: false\n\nExample 4:\nInput: msg = \" \"\nOutput: true  // only symbols → empty string after cleanup.",
+      "constraints": "Constraints:\n1 <= msg.length <= 200 000",
       "language": "java",
 
       "boilerplate": [
         "class Solution {",
-        "    public boolean isPalindrome(String s) {",
-        "        /* Line 1 */ // sanitize: remove non‑alphanumerics",
-        "        /* Line 2 */ // lowercase",
-        "        /* Line 3 */ // l pointer",
-        "        /* Line 4 */ // r pointer",
-        "        /* Line 5 */ // iterate while l < r",
-        "        /* Line 6 */ // mismatch check",
-        "        /* Line 7 */ // move pointers",
-        "        /* Line 8 */ // all matched",
+        "    public boolean isMirrorPhrase(String msg) {",
+        "        /* Line 1 */ // remove symbols & punctuation",
+        "        /* Line 2 */ // convert to lowercase",
+        "        /* Line 3 */ // left pointer",
+        "        /* Line 4 */ // right pointer",
+        "        /* Line 5 */ // walk toward center",
+        "        /* Line 6 */ // mismatch → false",
+        "        /* Line 7 */ // advance pointers",
+        "        /* Line 8 */ // all matched → true",
         "    }",
         "}"
       ],
@@ -29,100 +31,112 @@
       "steps": [
         {
           "placeholder": "/* Line 1 */",
-          "comment": "// sanitize",
+          "comment": "// remove symbols & punctuation",
           "options": [
-            "s = s.replaceAll(\"[^A-Za-z0-9]\", \"\");",
-            "s = s.toLowerCase();",
-            "StringBuilder sb = new StringBuilder();",
-            "s = s.trim();"
+            "msg = msg.replaceAll(\"[^A-Za-z0-9]\", \"\");",
+            "msg = msg.toLowerCase();",
+            "msg = msg.trim();",
+            "msg = msg.substring(1);"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 2 */",
-          "comment": "// lowercase",
+          "comment": "// convert to lowercase",
           "options": [
-            "s = s.toLowerCase();",
-            "s = s.toUpperCase();",
-            "s = s.replace(\" \", \"\");",
+            "msg = msg.toLowerCase();",
+            "msg = msg.toUpperCase();",
+            "msg = msg.replace(\" \", \"\");",
             "continue;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 3 */",
-          "comment": "// l pointer",
-          "options": ["int l = 0;", "int r = 0;", "int i = 0;", "int l = 1;"],
+          "comment": "// left pointer",
+          "options": [
+            "int left = 0;",
+            "int right = 0;",
+            "int i = 0;",
+            "int left = 1;"
+          ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 4 */",
-          "comment": "// r pointer",
+          "comment": "// right pointer",
           "options": [
-            "int r = s.length() - 1;",
-            "int l = s.length() - 1;",
-            "int r = s.length();",
-            "int r = 0;"
+            "int right = msg.length() - 1;",
+            "int left = msg.length() - 1;",
+            "int right = msg.length();",
+            "int right = 0;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 5 */",
-          "comment": "// iterate",
+          "comment": "// walk toward centre",
           "options": [
-            "while (l < r) {",
-            "for (int i = 0; i < r; i++) {",
-            "do {",
-            "while (l <= r) {"
+            "while (left < right) {",
+            "for (int i = 0; i < right; i++) {",
+            "while (left <= right) {",
+            "do {"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 6 */",
-          "comment": "// mismatch check",
+          "comment": "// mismatch → false",
           "options": [
-            "if (s.charAt(l) != s.charAt(r)) return false;",
-            "if (s.charAt(l) == s.charAt(r)) return false;",
-            "if (l == r) break;",
+            "if (msg.charAt(left) != msg.charAt(right)) return false;",
+            "if (msg.charAt(left) == msg.charAt(right)) return false;",
+            "if (left == right) break;",
             "continue;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 7 */",
-          "comment": "// move pointers",
-          "options": ["l++; r--;", "l--; r++;", "l++;", "r--;"],
+          "comment": "// advance pointers",
+          "options": [
+            "left++; right--;",
+            "left--; right++;",
+            "left++;",
+            "right--;"
+          ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 8 */",
-          "comment": "// all matched",
+          "comment": "// all matched → true",
           "options": ["return true;", "return false;", "break;", "continue;"],
           "answerIndex": 0
         }
       ]
     },
     {
-      "id": "is_subsequence",
+      "id": "ordered_substring_test",
+      "idNum": 2,
       "leetcodeId": 392,
-      "title": "Is Subsequence",
+      "source": "LeetCode",
+      "title": "Ordered Substring Test",
       "difficulty": "Easy",
 
-      "description": "Given two strings s and t, return true if s is a subsequence of t, or false otherwise. A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters.",
-      "example": "Example 1:\nInput: s = \"abc\", t = \"ahbgdc\"\nOutput: true\n\nExample 2:\nInput: s = \"axc\", t = \"ahbgdc\"\nOutput: false",
-      "constraints": "Constraints:\n0 <= s.length <= 100\n0 <= t.length <= 10^4\ns and t consist only of lowercase English letters.",
+      "description": "Given two lowercase strings `src` and `target`, decide whether every character of `src` appears inside `target` **in the same order** (though not necessarily contiguously). If that is the case, return `true`; otherwise return `false`.",
+      "example": "Example 1:\nInput: src = \"ace\",  target = \"abcde\"\nOutput: true  // a-c-e are found in order\n\nExample 2:\nInput: src = \"axc\",  target = \"ahbgdc\"\nOutput: false\n\nExample 3:\nInput: src = \"\",    target = \"any\"\nOutput: true  // empty string is trivially ordered",
+      "constraints": "Constraints:\n0 <= src.length <= 100\n0 <= target.length <= 10 000\nBoth strings consist of lowercase English letters only.",
       "language": "java",
 
       "boilerplate": [
         "class Solution {",
-        "    public boolean isSubsequence(String s, String t) {",
-        "        /* Line 1 */ // quick check empty s",
-        "        /* Line 2 */ // ptrS",
-        "        /* Line 3 */ // ptrT",
-        "        /* Line 4 */ // main loop",
-        "        /* Line 5 */ // char match → advance ptrS",
-        "        /* Line 6 */ // always advance ptrT",
-        "        /* Line 7 */ // success if ptrS exhausted",
+        "    public boolean isOrderedSubstring(String src, String target) {",
+        "        /* Line 1 */ // empty src is always true",
+        "        /* Line 2 */ // pointer i for src",
+        "        /* Line 3 */ // pointer j for target",
+        "        /* Line 4 */ // walk through target",
+        "        /* Line 5 */ // on match: advance i",
+        "        /* Line 6 */ // always advance j",
+        "        /* Line 7 */ // done? compare i to src length",
         "    }",
         "}"
       ],
@@ -130,71 +144,71 @@
       "steps": [
         {
           "placeholder": "/* Line 1 */",
-          "comment": "// empty s",
+          "comment": "// empty src",
           "options": [
-            "if (s.isEmpty()) return true;",
-            "if (t.isEmpty()) return false;",
-            "if (s == null) return false;",
+            "if (src.isEmpty()) return true;",
+            "if (target.isEmpty()) return false;",
+            "if (src == null) return false;",
             "return false;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 2 */",
-          "comment": "// ptrS",
+          "comment": "// pointer i",
           "options": [
             "int i = 0;",
             "int j = 0;",
             "int ptr = 0;",
-            "int i = s.length();"
+            "int i = src.length();"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 3 */",
-          "comment": "// ptrT",
+          "comment": "// pointer j",
           "options": [
             "int j = 0;",
             "int i = 0;",
             "int ptr = 0;",
-            "int j = t.length();"
+            "int j = target.length();"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 4 */",
-          "comment": "// loop",
+          "comment": "// walk target",
           "options": [
-            "while (i < s.length() && j < t.length()) {",
-            "for (char c : t.toCharArray()) {",
-            "while (j < t.length()) {",
+            "while (i < src.length() && j < target.length()) {",
+            "for (char c : target.toCharArray()) {",
+            "while (j < target.length()) {",
             "do {"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 5 */",
-          "comment": "// match",
+          "comment": "// match → i++",
           "options": [
-            "if (s.charAt(i) == t.charAt(j)) i++;",
-            "if (s.charAt(i) != t.charAt(j)) i++;",
-            "if (t.charAt(i) == s.charAt(j)) i++;",
+            "if (src.charAt(i) == target.charAt(j)) i++;",
+            "if (src.charAt(i) != target.charAt(j)) i++;",
+            "if (target.charAt(i) == src.charAt(j)) i++;",
             "continue;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 6 */",
-          "comment": "// advance j",
+          "comment": "// always j++",
           "options": ["j++;", "i++;", "continue;", "j--;"],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 7 */",
-          "comment": "// return",
+          "comment": "// success?",
           "options": [
-            "return i == s.length();",
-            "return j == t.length();",
+            "return i == src.length();",
+            "return j == target.length();",
             "return true;",
             "return false;"
           ],
@@ -203,26 +217,29 @@
       ]
     },
     {
-      "id": "two_sum_ii",
+      "id": "index_pair_target_sum",
+      "idNum": 3,
       "leetcodeId": 167,
-      "title": "Two Sum II – Input Array Is Sorted",
+      "source": "LeetCode",
+      "title": "Index Pair with Target Sum",
       "difficulty": "Medium",
 
-      "description": "Given a **1‑indexed** array `numbers` that is already sorted in non‑decreasing order, find two numbers such that they add up to `target`. Return their indices **added by one** as an integer array `[index1, index2]`.\n\nYou must use constant extra space and each input has exactly one solution.",
-      "example": "Example 1:\nInput: numbers = [2,7,11,15], target = 9\nOutput: [1,2]\n\nExample 2:\nInput: numbers = [2,3,4], target = 6\nOutput: [1,3]\n\nExample 3:\nInput: numbers = [-1,0], target = -1\nOutput: [1,2]",
-      "constraints": "Constraints:\n2 <= numbers.length <= 3 × 10^4\n-1000 <= numbers[i] <= 1000\n-1000 <= target <= 1000\n`numbers` is sorted in non‑decreasing order and has exactly one solution.",
+      "description": "You receive a **1-indexed** array `vals` that is already sorted in non-decreasing order. Find two different elements whose values add up to `goal` and return their *indices* (1-based) as `[i, j]` with `i < j`. Exactly one valid pair exists and only constant extra space may be used.",
+      "example": "Example 1:\nInput: vals = [1,4,6,8,11],  goal = 10\nOutput: [2,3]  // 4 + 6 = 10\n\nExample 2:\nInput: vals = [-3,-1,2,5],  goal = 1\nOutput: [1,4]\n\nExample 3:\nInput: vals = [2,3,4],       goal = 6\nOutput: [1,3]",
+      "constraints": "Constraints:\n2 <= vals.length <= 30 000\n-1000 <= vals[i] <= 1000\n-1000 <= goal <= 1000\nThe array is sorted in non-decreasing order and exactly one solution exists.",
       "language": "java",
 
       "boilerplate": [
         "class Solution {",
-        "    public int[] twoSum(int[] numbers, int target) {",
-        "        /* Line 1 */ // left ptr",
-        "        /* Line 2 */ // right ptr",
-        "        /* Line 3 */ // loop",
-        "        /* Line 4 */ // calc sum",
-        "        /* Line 5 */ // found → return",
-        "        /* Line 6 */ // shift ptrs",
-        "        /* Line 7 */ // unreachable fallback",
+        "    public int[] findPair(int[] vals, int goal) {",
+        "        /* Line 1 */ // left index",
+        "        /* Line 2 */ // right index",
+        "        /* Line 3 */ // loop until they cross",
+        "        /* Line 4 */ // compute sum",
+        "        /* Line 5 */ // if match → return 1-based indices",
+        "        /* Line 6 */ // sum too small → move left",
+        "        /* Line 7 */ // sum too large → move right",
+        "        /* Line 8 */ // unreachable safeguard",
         "    }",
         "}"
       ],
@@ -230,18 +247,23 @@
       "steps": [
         {
           "placeholder": "/* Line 1 */",
-          "comment": "// left ptr",
-          "options": ["int l = 0;", "int r = 0;", "int l = 1;", "int i = 0;"],
+          "comment": "// left index",
+          "options": [
+            "int left = 0;",
+            "int left = 1;",
+            "int right = 0;",
+            "int i = 0;"
+          ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 2 */",
-          "comment": "// right ptr",
+          "comment": "// right index",
           "options": [
-            "int r = numbers.length - 1;",
-            "int l = numbers.length - 1;",
-            "int r = numbers.length;",
-            "int[] idx = new int[2];"
+            "int right = vals.length - 1;",
+            "int right = vals.length;",
+            "int left = vals.length - 1;",
+            "int[] p = new int[2];"
           ],
           "answerIndex": 0
         },
@@ -249,49 +271,55 @@
           "placeholder": "/* Line 3 */",
           "comment": "// loop",
           "options": [
-            "while (l < r) {",
-            "for (int i = 0; i < r; i++) {",
-            "while (l <= r) {",
+            "while (left < right) {",
+            "for (int k = 0; k < right; k++) {",
+            "while (left <= right) {",
             "do {"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 4 */",
-          "comment": "// calc sum",
+          "comment": "// compute sum",
           "options": [
-            "int sum = numbers[l] + numbers[r];",
-            "int sum = numbers[r] - numbers[l];",
-            "int sum = target - numbers[l];",
-            "continue;"
+            "int sum = vals[left] + vals[right];",
+            "int sum = vals[right] - vals[left];",
+            "int sum = goal - vals[left];",
+            "int sum = left + right;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 5 */",
-          "comment": "// found",
+          "comment": "// match → return",
           "options": [
-            "if (sum == target) return new int[]{l + 1, r + 1};",
-            "if (sum == target) return new int[]{l, r};",
-            "if (sum != target) return new int[]{-1,-1};",
+            "if (sum == goal) return new int[]{left + 1, right + 1};",
+            "if (sum == goal) return new int[]{left, right};",
+            "if (sum != goal) return new int[]{-1,-1};",
             "break;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 6 */",
-          "comment": "// shift",
+          "comment": "// sum too small",
           "options": [
-            "if (sum < target) l++; else r--;",
-            "l++; r--;",
-            "if (sum > target) l++; else r--;",
-            "r--; l++;"
+            "if (sum < goal) { left++; continue; }",
+            "if (sum < goal) right--;",
+            "if (sum < goal) left--;",
+            "continue;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 7 */",
-          "comment": "// fallback",
+          "comment": "// sum too large",
+          "options": ["right--;", "left++;", "left--;", "break;"],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 8 */",
+          "comment": "// safeguard",
           "options": [
             "return new int[]{-1, -1};",
             "return null;",
@@ -303,28 +331,30 @@
       ]
     },
     {
-      "id": "container_with_most_water",
+      "id": "maximum_water_capacity",
+      "idNum": 4,
+      "source": "LeetCode",
       "leetcodeId": 11,
-      "title": "Container With Most Water",
+      "title": "Maximum Water Capacity",
       "difficulty": "Medium",
 
-      "description": "You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the *i‑th* line are `(i, 0)` and `(i, height[i])`. Find two lines that together with the x‑axis form a container that stores the most water. Return that maximum area. You may not slant the container.",
-      "example": "Example 1:\nInput: height = [1,8,6,2,5,4,8,3,7]\nOutput: 49\n\nExample 2:\nInput: height = [1,1]\nOutput: 1",
-      "constraints": "Constraints:\n2 <= n <= 10^5\n0 <= height[i] <= 10^4",
+      "description": "You are given an array `walls` where the *i-th* value is the height of a vertical wall drawn at coordinate *i*. Picking any two walls and using the X-axis as the base creates a tank. Your task is to find the pair that holds the greatest volume of water and return that volume.",
+      "example": "Example 1:\nInput: walls = [1,8,6,2,5,4,8,3,7]\nOutput: 49\n\nExample 2:\nInput: walls = [1,1]\nOutput: 1",
+      "constraints": "Constraints:\n2 <= walls.length <= 100 000\n0 <= walls[i] <= 10 000",
       "language": "java",
 
       "boilerplate": [
         "class Solution {",
-        "    public int maxArea(int[] height) {",
-        "        /* Line 1 */ // left pointer",
-        "        /* Line 2 */ // right pointer",
-        "        /* Line 3 */ // max area so far",
-        "        /* Line 4 */ // iterate while left < right",
-        "        /* Line 5 */ // compute current area",
-        "        /* Line 6 */ // update max",
-        "        /* Line 7 */ // move pointer with smaller height",
-        "        /* Line 8 */ // close loop",
-        "        /* Line 9 */ // return answer",
+        "    public int maxCapacity(int[] walls) {",
+        "        /* Line 1 */ // pointer a at start",
+        "        /* Line 2 */ // pointer b at end",
+        "        /* Line 3 */ // best volume so far",
+        "        /* Line 4 */ // iterate while a < b",
+        "        /* Line 5 */ // compute current volume",
+        "        /* Line 6 */ // store larger volume",
+        "        /* Line 7 */ // advance pointer with shorter wall",
+        "        /* Line 8 */ // loop ends",
+        "        /* Line 9 */ // final answer",
         "    }",
         "}"
       ],
@@ -332,115 +362,117 @@
       "steps": [
         {
           "placeholder": "/* Line 1 */",
-          "comment": "// left pointer",
-          "options": ["int l = 0;", "int r = 0;", "int l = 1;", "int i = 0;"],
+          "comment": "// pointer a at start",
+          "options": ["int a = 0;", "int b = 0;", "int a = 1;", "int i = 0;"],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 2 */",
-          "comment": "// right pointer",
+          "comment": "// pointer b at end",
           "options": [
-            "int r = height.length - 1;",
-            "int r = height.length;",
-            "int l = height.length - 1;",
+            "int b = walls.length - 1;",
+            "int a = walls.length - 1;",
+            "int b = walls.length;",
             "int[] idx = new int[2];"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 3 */",
-          "comment": "// max area so far",
+          "comment": "// best volume so far",
           "options": [
-            "int max = 0;",
-            "int area = 0;",
-            "int max = Integer.MIN_VALUE;",
+            "int best = 0;",
+            "int cap = 0;",
+            "int best = Integer.MIN_VALUE;",
             "int sum = 0;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 4 */",
-          "comment": "// iterate while left < right",
+          "comment": "// iterate while a < b",
           "options": [
-            "while (l < r) {",
-            "for (int i = 0; i < r; i++) {",
-            "while (l <= r) {",
+            "while (a < b) {",
+            "for (int k = 0; k < b; k++) {",
+            "while (a <= b) {",
             "do {"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 5 */",
-          "comment": "// compute current area",
+          "comment": "// compute current volume",
           "options": [
-            "int area = Math.min(height[l], height[r]) * (r - l);",
-            "int area = height[l] + height[r];",
-            "int area = Math.max(height[l], height[r]);",
-            "int area = r - l;"
+            "int vol = Math.min(walls[a], walls[b]) * (b - a);",
+            "int vol = walls[a] + walls[b];",
+            "int vol = Math.max(walls[a], walls[b]);",
+            "int vol = b - a;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 6 */",
-          "comment": "// update max",
+          "comment": "// store larger volume",
           "options": [
-            "max = Math.max(max, area);",
-            "if (area > max) max = area;",
-            "max += area;",
+            "best = Math.max(best, vol);",
+            "if (vol > best) best = vol;",
+            "best += vol;",
             "continue;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 7 */",
-          "comment": "// move pointer with smaller height",
+          "comment": "// advance pointer with shorter wall",
           "options": [
-            "if (height[l] < height[r]) l++; else r--;",
-            "l++; r--;",
-            "if (height[l] > height[r]) l++; else r--;",
-            "r--; l++;"
+            "if (walls[a] < walls[b]) a++; else b--;",
+            "a++; b--;",
+            "if (walls[a] > walls[b]) a++; else b--;",
+            "b--; a++;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 8 */",
-          "comment": "// close loop",
+          "comment": "// loop ends",
           "options": ["}", "break;", "continue;", "{"],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 9 */",
-          "comment": "// return answer",
-          "options": ["return max;", "return area;", "return -1;", "return 0;"],
+          "comment": "// final answer",
+          "options": ["return best;", "return vol;", "return -1;", "return 0;"],
           "answerIndex": 0
         }
       ]
     },
     {
-      "id": "three_sum",
+      "id": "zero_sum_triplets",
+      "idNum": 5,
       "leetcodeId": 15,
-      "title": "3Sum",
+      "source": "LeetCode",
+      "title": "Zero-Sum Triplets",
       "difficulty": "Medium",
 
-      "description": "Given an integer array `nums`, return all the distinct triplets `[nums[i], nums[j], nums[k]]` such that `i ≠ j`, `i ≠ k`, `j ≠ k`, and `nums[i] + nums[j] + nums[k] == 0`. The solution set must not contain duplicate triplets.",
-      "example": "Example 1:\nInput: nums = [-1,0,1,2,-1,-4]\nOutput: [[-1,-1,2],[-1,0,1]]\n\nExample 2:\nInput: nums = [0,1,1]\nOutput: []\n\nExample 3:\nInput: nums = [0,0,0]\nOutput: [[0,0,0]]",
-      "constraints": "Constraints:\n3 <= nums.length <= 3000\n-10^5 <= nums[i] <= 10^5",
+      "description": "Given an integer array `vals`, return every distinct triple `[vals[a], vals[b], vals[c]]` with `a ≠ b ≠ c` such that the three numbers add to **zero**.  The answer must not contain duplicate triples (order inside the triple or the list does not matter).",
+      "example": "Example 1:\nInput: vals = [-1,0,1,2,-1,-4]\nOutput: [[-1,-1,2],[-1,0,1]]\n\nExample 2:\nInput: vals = [0,1,1]\nOutput: []\n\nExample 3:\nInput: vals = [0,0,0]\nOutput: [[0,0,0]]",
+      "constraints": "Constraints:\n3 ≤ vals.length ≤ 3 000\n-100 000 ≤ vals[i] ≤ 100 000",
       "language": "java",
 
       "boilerplate": [
         "class Solution {",
-        "    public List<List<Integer>> threeSum(int[] nums) {",
-        "        /* Line 1 */ // sort array",
-        "        /* Line 2 */ // result list",
-        "        /* Line 3 */ // iterate i",
-        "        /* Line 4 */ // skip dup i",
-        "        /* Line 5 */ // two‑ptr l & r",
-        "        /* Line 6 */ // while l < r",
-        "        /* Line 7 */ // compute sum",
-        "        /* Line 8 */ // found triplet → add & skip dups",
-        "        /* Line 9 */ // sum < 0 → l++",
-        "        /* Line 10 */ // sum > 0 → r--",
-        "        /* Line 11 */ // return",
+        "    public List<List<Integer>> zeroSumTriplets(int[] vals) {",
+        "        /* Line 1 */ // sort input",
+        "        /* Line 2 */ // container for results",
+        "        /* Line 3 */ // scan each 'a' index",
+        "        /* Line 4 */ // skip duplicate 'a'",
+        "        /* Line 5 */ // two-pointer setup for b & c",
+        "        /* Line 6 */ // iterate while b < c",
+        "        /* Line 7 */ // measure triple sum",
+        "        /* Line 8 */ // sum == 0 → record & dedup",
+        "        /* Line 9 */ // sum < 0  → advance b",
+        "        /* Line 10 */ // sum > 0 → retreat c",
+        "        /* Line 11 */ // after loops return list",
         "    }",
         "}"
       ],
@@ -448,87 +480,87 @@
       "steps": [
         {
           "placeholder": "/* Line 1 */",
-          "comment": "// sort array",
+          "comment": "// sort input",
           "options": [
-            "Arrays.sort(nums);",
-            "Collections.sort(nums);",
-            "int[] sorted = nums.clone();",
-            "Arrays.stream(nums).sorted();"
+            "Arrays.sort(vals);",
+            "Collections.sort(Arrays.asList(vals));",
+            "int[] sorted = vals.clone();",
+            "Arrays.stream(vals).sorted();"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 2 */",
-          "comment": "// result list",
+          "comment": "// container",
           "options": [
             "List<List<Integer>> res = new ArrayList<>();",
-            "List<int[]> res = new ArrayList<>();",
             "Set<List<Integer>> res = new HashSet<>();",
+            "List<int[]> res = new ArrayList<>();",
             "List<List<Integer>> res = Collections.emptyList();"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 3 */",
-          "comment": "// iterate i",
+          "comment": "// scan a",
           "options": [
-            "for (int i = 0; i < nums.length - 2; i++) {",
-            "for (int i = 0; i <= nums.length - 3; i++) {",
-            "int i = 0;",
-            "while (i < nums.length) {"
+            "for (int a = 0; a < vals.length - 2; a++) {",
+            "for (int a = 0; a <= vals.length - 3; a++) {",
+            "int a = 0;",
+            "while (true) {"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 4 */",
-          "comment": "// skip dup i",
+          "comment": "// skip dup a",
           "options": [
-            "if (i > 0 && nums[i] == nums[i - 1]) continue;",
-            "if (nums[i] == nums[i + 1]) continue;",
-            "if (i == 0) continue;",
+            "if (a > 0 && vals[a] == vals[a - 1]) continue;",
+            "if (vals[a] == vals[a + 1]) continue;",
+            "if (a == 0) continue;",
             "continue;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 5 */",
-          "comment": "// two‑ptr l & r",
+          "comment": "// two-ptr setup",
           "options": [
-            "int l = i + 1, r = nums.length - 1;",
-            "int l = 0, r = i - 1;",
-            "int r = i + 1;",
+            "int b = a + 1, c = vals.length - 1;",
+            "int b = 0, c = a - 1;",
+            "int c = a + 1;",
             "int[] ptr = new int[2];"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 6 */",
-          "comment": "// while l < r",
+          "comment": "// loop b < c",
           "options": [
-            "while (l < r) {",
-            "for (int j = l; j < r; j++) {",
+            "while (b < c) {",
+            "for (int j = b; j < c; j++) {",
             "do {",
-            "while (l <= r) {"
+            "while (b <= c) {"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 7 */",
-          "comment": "// compute sum",
+          "comment": "// triple sum",
           "options": [
-            "int sum = nums[i] + nums[l] + nums[r];",
-            "int sum = nums[l] + nums[r];",
-            "int sum = nums[i] + nums[l];",
-            "int sum = nums[i] + nums[r];"
+            "int sum = vals[a] + vals[b] + vals[c];",
+            "int sum = vals[b] + vals[c];",
+            "int sum = vals[a] + vals[b];",
+            "int sum = vals[a] + vals[c];"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 8 */",
-          "comment": "// found triplet",
+          "comment": "// sum == 0",
           "options": [
-            "if (sum == 0) { res.add(Arrays.asList(nums[i], nums[l], nums[r]));\n    while (l < r && nums[l] == nums[l + 1]) l++;\n    while (l < r && nums[r] == nums[r - 1]) r--; l++; r--; }",
-            "if (sum == 0) res.add(Arrays.asList(nums[i], nums[l], nums[r]));",
+            "if (sum == 0) { res.add(Arrays.asList(vals[a], vals[b], vals[c]));\n    while (b < c && vals[b] == vals[b + 1]) b++;\n    while (b < c && vals[c] == vals[c - 1]) c--; b++; c--; }",
+            "if (sum == 0) res.add(Arrays.asList(vals[a], vals[b], vals[c]));",
             "if (sum == 0) return res;",
             "if (sum != 0) continue;"
           ],
@@ -538,9 +570,9 @@
           "placeholder": "/* Line 9 */",
           "comment": "// sum < 0",
           "options": [
-            "else if (sum < 0) l++;",
-            "else if (sum < 0) r--;",
-            "if (sum < 0) l--;",
+            "else if (sum < 0) b++;",
+            "else if (sum < 0) c--;",
+            "if (sum < 0) b--;",
             "continue;"
           ],
           "answerIndex": 0
@@ -549,16 +581,16 @@
           "placeholder": "/* Line 10 */",
           "comment": "// sum > 0",
           "options": [
-            "else r--;",
-            "else l++;",
-            "else if (sum > 0) l++;",
+            "else c--;",
+            "else b++;",
+            "else if (sum > 0) b++;",
             "break;"
           ],
           "answerIndex": 0
         },
         {
           "placeholder": "/* Line 11 */",
-          "comment": "// return",
+          "comment": "// return list",
           "options": [
             "return res;",
             "return new ArrayList<>();",

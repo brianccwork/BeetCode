@@ -1,4 +1,5 @@
 - Add a Categories feature for future topics
+- Maintain Custom Wording For Problems, to Diversify Learning Experience!
 
 BeetCode Add List from https://leetcode.com/studyplan/top-interview-150/
 -------------------
