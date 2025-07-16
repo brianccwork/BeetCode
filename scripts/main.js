@@ -73,7 +73,9 @@
       loadProblem(0);
     } catch (err) {
       console.error(err);
-      showError("Failed to load problems. Please check your connection or try again later.");
+      showError(
+        "Failed to load problems. Please check your connection or try again later."
+      );
     }
   });
 
@@ -118,7 +120,8 @@
 
   // problem loader
   function loadProblem(idx, force = false) {
-    if (idx < 0 || idx >= problems.length || (idx === currentIdx && !force)) return;
+    if (idx < 0 || idx >= problems.length || (idx === currentIdx && !force))
+      return;
 
     currentIdx = idx;
     const p = problems[idx];
@@ -171,7 +174,9 @@
     );
     const footer = p.boilerplate.slice(2 + p.steps.length);
 
-    refs.code.innerHTML = encode([...header, ...body, ...footer].join("\n")).replace(
+    refs.code.innerHTML = encode(
+      [...header, ...body, ...footer].join("\n")
+    ).replace(
       encode('<span class="cursor"></span>'),
       '<span class="cursor"></span>'
     );
@@ -217,7 +222,9 @@
 
     setTimeout(() => {
       activeLine++;
-      activeLine === p.steps.length ? finishProblem(p) : (renderCode(p), renderChoices(p));
+      activeLine === p.steps.length
+        ? finishProblem(p)
+        : (renderCode(p), renderChoices(p));
     }, 350);
   }
 
@@ -259,7 +266,7 @@
   }
 
   function updateProgressLabel() {
-    refs.progressLbl.textContent = `${solvedSet.size} / ${problems.length} Beet `;
+    refs.progressLbl.textContent = `${solvedSet.size} / ${problems.length} Beets `;
     refs.title.style.opacity = solvedSet.has(problems[currentIdx].id) ? 0.4 : 1;
   }
 })();
