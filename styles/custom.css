@@ -1,0 +1,14 @@
+.code-card {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: Consolas, monospace;
+}
+.code-card pre {
+  margin: 0;
+  white-space: pre-wrap;
+}
+.choice-btn {
+  text-align: left;
+  white-space: normal;
+  font-family: Consolas, monospace;
+}

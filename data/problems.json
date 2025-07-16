@@ -1,0 +1,573 @@
+{
+  "problems": [
+    {
+      "id": "valid_palindrome",
+      "leetcodeId": 125,
+      "title": "Valid Palindrome",
+      "difficulty": "Easy",
+
+      "description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non‑alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.\n\nGiven a string s, return true if it is a palindrome, or false otherwise.\n",
+      "example": "Example 1:\nInput: s = \"A man, a plan, a canal: Panama\"\nOutput: true\n\"amanaplanacanalpanama\" is a palindrome.\n\nExample 2:\nInput: s = \"race a car\"\nOutput: false\n\"raceacar\" is not a palindrome.\n\nExample 3:\nInput: s = \" \"\nOutput: true\nAn empty string reads the same forward and backward.\n",
+      "constraints": "Constraints:\n1 <= s.length <= 2 × 10^5",
+      "language": "java",
+
+      "boilerplate": [
+        "class Solution {",
+        "    public boolean isPalindrome(String s) {",
+        "        /* Line 1 */ // sanitize: remove non‑alphanumerics",
+        "        /* Line 2 */ // lowercase",
+        "        /* Line 3 */ // l pointer",
+        "        /* Line 4 */ // r pointer",
+        "        /* Line 5 */ // iterate while l < r",
+        "        /* Line 6 */ // mismatch check",
+        "        /* Line 7 */ // move pointers",
+        "        /* Line 8 */ // all matched",
+        "    }",
+        "}"
+      ],
+
+      "steps": [
+        {
+          "placeholder": "/* Line 1 */",
+          "comment": "// sanitize",
+          "options": [
+            "s = s.replaceAll(\"[^A-Za-z0-9]\", \"\");",
+            "s = s.toLowerCase();",
+            "StringBuilder sb = new StringBuilder();",
+            "s = s.trim();"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 2 */",
+          "comment": "// lowercase",
+          "options": [
+            "s = s.toLowerCase();",
+            "s = s.toUpperCase();",
+            "s = s.replace(\" \", \"\");",
+            "continue;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 3 */",
+          "comment": "// l pointer",
+          "options": ["int l = 0;", "int r = 0;", "int i = 0;", "int l = 1;"],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 4 */",
+          "comment": "// r pointer",
+          "options": [
+            "int r = s.length() - 1;",
+            "int l = s.length() - 1;",
+            "int r = s.length();",
+            "int r = 0;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 5 */",
+          "comment": "// iterate",
+          "options": [
+            "while (l < r) {",
+            "for (int i = 0; i < r; i++) {",
+            "do {",
+            "while (l <= r) {"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 6 */",
+          "comment": "// mismatch check",
+          "options": [
+            "if (s.charAt(l) != s.charAt(r)) return false;",
+            "if (s.charAt(l) == s.charAt(r)) return false;",
+            "if (l == r) break;",
+            "continue;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 7 */",
+          "comment": "// move pointers",
+          "options": ["l++; r--;", "l--; r++;", "l++;", "r--;"],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 8 */",
+          "comment": "// all matched",
+          "options": ["return true;", "return false;", "break;", "continue;"],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "is_subsequence",
+      "leetcodeId": 392,
+      "title": "Is Subsequence",
+      "difficulty": "Easy",
+
+      "description": "Given two strings s and t, return true if s is a subsequence of t, or false otherwise. A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters.",
+      "example": "Example 1:\nInput: s = \"abc\", t = \"ahbgdc\"\nOutput: true\n\nExample 2:\nInput: s = \"axc\", t = \"ahbgdc\"\nOutput: false",
+      "constraints": "Constraints:\n0 <= s.length <= 100\n0 <= t.length <= 10^4\ns and t consist only of lowercase English letters.",
+      "language": "java",
+
+      "boilerplate": [
+        "class Solution {",
+        "    public boolean isSubsequence(String s, String t) {",
+        "        /* Line 1 */ // quick check empty s",
+        "        /* Line 2 */ // ptrS",
+        "        /* Line 3 */ // ptrT",
+        "        /* Line 4 */ // main loop",
+        "        /* Line 5 */ // char match → advance ptrS",
+        "        /* Line 6 */ // always advance ptrT",
+        "        /* Line 7 */ // success if ptrS exhausted",
+        "    }",
+        "}"
+      ],
+
+      "steps": [
+        {
+          "placeholder": "/* Line 1 */",
+          "comment": "// empty s",
+          "options": [
+            "if (s.isEmpty()) return true;",
+            "if (t.isEmpty()) return false;",
+            "if (s == null) return false;",
+            "return false;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 2 */",
+          "comment": "// ptrS",
+          "options": [
+            "int i = 0;",
+            "int j = 0;",
+            "int ptr = 0;",
+            "int i = s.length();"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 3 */",
+          "comment": "// ptrT",
+          "options": [
+            "int j = 0;",
+            "int i = 0;",
+            "int ptr = 0;",
+            "int j = t.length();"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 4 */",
+          "comment": "// loop",
+          "options": [
+            "while (i < s.length() && j < t.length()) {",
+            "for (char c : t.toCharArray()) {",
+            "while (j < t.length()) {",
+            "do {"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 5 */",
+          "comment": "// match",
+          "options": [
+            "if (s.charAt(i) == t.charAt(j)) i++;",
+            "if (s.charAt(i) != t.charAt(j)) i++;",
+            "if (t.charAt(i) == s.charAt(j)) i++;",
+            "continue;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 6 */",
+          "comment": "// advance j",
+          "options": ["j++;", "i++;", "continue;", "j--;"],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 7 */",
+          "comment": "// return",
+          "options": [
+            "return i == s.length();",
+            "return j == t.length();",
+            "return true;",
+            "return false;"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "two_sum_ii",
+      "leetcodeId": 167,
+      "title": "Two Sum II – Input Array Is Sorted",
+      "difficulty": "Medium",
+
+      "description": "Given a **1‑indexed** array `numbers` that is already sorted in non‑decreasing order, find two numbers such that they add up to `target`. Return their indices **added by one** as an integer array `[index1, index2]`.\n\nYou must use constant extra space and each input has exactly one solution.",
+      "example": "Example 1:\nInput: numbers = [2,7,11,15], target = 9\nOutput: [1,2]\n\nExample 2:\nInput: numbers = [2,3,4], target = 6\nOutput: [1,3]\n\nExample 3:\nInput: numbers = [-1,0], target = -1\nOutput: [1,2]",
+      "constraints": "Constraints:\n2 <= numbers.length <= 3 × 10^4\n-1000 <= numbers[i] <= 1000\n-1000 <= target <= 1000\n`numbers` is sorted in non‑decreasing order and has exactly one solution.",
+      "language": "java",
+
+      "boilerplate": [
+        "class Solution {",
+        "    public int[] twoSum(int[] numbers, int target) {",
+        "        /* Line 1 */ // left ptr",
+        "        /* Line 2 */ // right ptr",
+        "        /* Line 3 */ // loop",
+        "        /* Line 4 */ // calc sum",
+        "        /* Line 5 */ // found → return",
+        "        /* Line 6 */ // shift ptrs",
+        "        /* Line 7 */ // unreachable fallback",
+        "    }",
+        "}"
+      ],
+
+      "steps": [
+        {
+          "placeholder": "/* Line 1 */",
+          "comment": "// left ptr",
+          "options": ["int l = 0;", "int r = 0;", "int l = 1;", "int i = 0;"],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 2 */",
+          "comment": "// right ptr",
+          "options": [
+            "int r = numbers.length - 1;",
+            "int l = numbers.length - 1;",
+            "int r = numbers.length;",
+            "int[] idx = new int[2];"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 3 */",
+          "comment": "// loop",
+          "options": [
+            "while (l < r) {",
+            "for (int i = 0; i < r; i++) {",
+            "while (l <= r) {",
+            "do {"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 4 */",
+          "comment": "// calc sum",
+          "options": [
+            "int sum = numbers[l] + numbers[r];",
+            "int sum = numbers[r] - numbers[l];",
+            "int sum = target - numbers[l];",
+            "continue;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 5 */",
+          "comment": "// found",
+          "options": [
+            "if (sum == target) return new int[]{l + 1, r + 1};",
+            "if (sum == target) return new int[]{l, r};",
+            "if (sum != target) return new int[]{-1,-1};",
+            "break;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 6 */",
+          "comment": "// shift",
+          "options": [
+            "if (sum < target) l++; else r--;",
+            "l++; r--;",
+            "if (sum > target) l++; else r--;",
+            "r--; l++;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 7 */",
+          "comment": "// fallback",
+          "options": [
+            "return new int[]{-1, -1};",
+            "return null;",
+            "return new int[0];",
+            "continue;"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "container_with_most_water",
+      "leetcodeId": 11,
+      "title": "Container With Most Water",
+      "difficulty": "Medium",
+
+      "description": "You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the *i‑th* line are `(i, 0)` and `(i, height[i])`. Find two lines that together with the x‑axis form a container that stores the most water. Return that maximum area. You may not slant the container.",
+      "example": "Example 1:\nInput: height = [1,8,6,2,5,4,8,3,7]\nOutput: 49\n\nExample 2:\nInput: height = [1,1]\nOutput: 1",
+      "constraints": "Constraints:\n2 <= n <= 10^5\n0 <= height[i] <= 10^4",
+      "language": "java",
+
+      "boilerplate": [
+        "class Solution {",
+        "    public int maxArea(int[] height) {",
+        "        /* Line 1 */ // left pointer",
+        "        /* Line 2 */ // right pointer",
+        "        /* Line 3 */ // max area so far",
+        "        /* Line 4 */ // iterate while left < right",
+        "        /* Line 5 */ // compute current area",
+        "        /* Line 6 */ // update max",
+        "        /* Line 7 */ // move pointer with smaller height",
+        "        /* Line 8 */ // close loop",
+        "        /* Line 9 */ // return answer",
+        "    }",
+        "}"
+      ],
+
+      "steps": [
+        {
+          "placeholder": "/* Line 1 */",
+          "comment": "// left pointer",
+          "options": ["int l = 0;", "int r = 0;", "int l = 1;", "int i = 0;"],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 2 */",
+          "comment": "// right pointer",
+          "options": [
+            "int r = height.length - 1;",
+            "int r = height.length;",
+            "int l = height.length - 1;",
+            "int[] idx = new int[2];"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 3 */",
+          "comment": "// max area so far",
+          "options": [
+            "int max = 0;",
+            "int area = 0;",
+            "int max = Integer.MIN_VALUE;",
+            "int sum = 0;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 4 */",
+          "comment": "// iterate while left < right",
+          "options": [
+            "while (l < r) {",
+            "for (int i = 0; i < r; i++) {",
+            "while (l <= r) {",
+            "do {"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 5 */",
+          "comment": "// compute current area",
+          "options": [
+            "int area = Math.min(height[l], height[r]) * (r - l);",
+            "int area = height[l] + height[r];",
+            "int area = Math.max(height[l], height[r]);",
+            "int area = r - l;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 6 */",
+          "comment": "// update max",
+          "options": [
+            "max = Math.max(max, area);",
+            "if (area > max) max = area;",
+            "max += area;",
+            "continue;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 7 */",
+          "comment": "// move pointer with smaller height",
+          "options": [
+            "if (height[l] < height[r]) l++; else r--;",
+            "l++; r--;",
+            "if (height[l] > height[r]) l++; else r--;",
+            "r--; l++;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 8 */",
+          "comment": "// close loop",
+          "options": ["}", "break;", "continue;", "{"],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 9 */",
+          "comment": "// return answer",
+          "options": ["return max;", "return area;", "return -1;", "return 0;"],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "three_sum",
+      "leetcodeId": 15,
+      "title": "3Sum",
+      "difficulty": "Medium",
+
+      "description": "Given an integer array `nums`, return all the distinct triplets `[nums[i], nums[j], nums[k]]` such that `i ≠ j`, `i ≠ k`, `j ≠ k`, and `nums[i] + nums[j] + nums[k] == 0`. The solution set must not contain duplicate triplets.",
+      "example": "Example 1:\nInput: nums = [-1,0,1,2,-1,-4]\nOutput: [[-1,-1,2],[-1,0,1]]\n\nExample 2:\nInput: nums = [0,1,1]\nOutput: []\n\nExample 3:\nInput: nums = [0,0,0]\nOutput: [[0,0,0]]",
+      "constraints": "Constraints:\n3 <= nums.length <= 3000\n-10^5 <= nums[i] <= 10^5",
+      "language": "java",
+
+      "boilerplate": [
+        "class Solution {",
+        "    public List<List<Integer>> threeSum(int[] nums) {",
+        "        /* Line 1 */ // sort array",
+        "        /* Line 2 */ // result list",
+        "        /* Line 3 */ // iterate i",
+        "        /* Line 4 */ // skip dup i",
+        "        /* Line 5 */ // two‑ptr l & r",
+        "        /* Line 6 */ // while l < r",
+        "        /* Line 7 */ // compute sum",
+        "        /* Line 8 */ // found triplet → add & skip dups",
+        "        /* Line 9 */ // sum < 0 → l++",
+        "        /* Line 10 */ // sum > 0 → r--",
+        "        /* Line 11 */ // return",
+        "    }",
+        "}"
+      ],
+
+      "steps": [
+        {
+          "placeholder": "/* Line 1 */",
+          "comment": "// sort array",
+          "options": [
+            "Arrays.sort(nums);",
+            "Collections.sort(nums);",
+            "int[] sorted = nums.clone();",
+            "Arrays.stream(nums).sorted();"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 2 */",
+          "comment": "// result list",
+          "options": [
+            "List<List<Integer>> res = new ArrayList<>();",
+            "List<int[]> res = new ArrayList<>();",
+            "Set<List<Integer>> res = new HashSet<>();",
+            "List<List<Integer>> res = Collections.emptyList();"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 3 */",
+          "comment": "// iterate i",
+          "options": [
+            "for (int i = 0; i < nums.length - 2; i++) {",
+            "for (int i = 0; i <= nums.length - 3; i++) {",
+            "int i = 0;",
+            "while (i < nums.length) {"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 4 */",
+          "comment": "// skip dup i",
+          "options": [
+            "if (i > 0 && nums[i] == nums[i - 1]) continue;",
+            "if (nums[i] == nums[i + 1]) continue;",
+            "if (i == 0) continue;",
+            "continue;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 5 */",
+          "comment": "// two‑ptr l & r",
+          "options": [
+            "int l = i + 1, r = nums.length - 1;",
+            "int l = 0, r = i - 1;",
+            "int r = i + 1;",
+            "int[] ptr = new int[2];"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 6 */",
+          "comment": "// while l < r",
+          "options": [
+            "while (l < r) {",
+            "for (int j = l; j < r; j++) {",
+            "do {",
+            "while (l <= r) {"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 7 */",
+          "comment": "// compute sum",
+          "options": [
+            "int sum = nums[i] + nums[l] + nums[r];",
+            "int sum = nums[l] + nums[r];",
+            "int sum = nums[i] + nums[l];",
+            "int sum = nums[i] + nums[r];"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 8 */",
+          "comment": "// found triplet",
+          "options": [
+            "if (sum == 0) { res.add(Arrays.asList(nums[i], nums[l], nums[r]));\n    while (l < r && nums[l] == nums[l + 1]) l++;\n    while (l < r && nums[r] == nums[r - 1]) r--; l++; r--; }",
+            "if (sum == 0) res.add(Arrays.asList(nums[i], nums[l], nums[r]));",
+            "if (sum == 0) return res;",
+            "if (sum != 0) continue;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 9 */",
+          "comment": "// sum < 0",
+          "options": [
+            "else if (sum < 0) l++;",
+            "else if (sum < 0) r--;",
+            "if (sum < 0) l--;",
+            "continue;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 10 */",
+          "comment": "// sum > 0",
+          "options": [
+            "else r--;",
+            "else l++;",
+            "else if (sum > 0) l++;",
+            "break;"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "placeholder": "/* Line 11 */",
+          "comment": "// return",
+          "options": [
+            "return res;",
+            "return new ArrayList<>();",
+            "return null;",
+            "break;"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    }
+  ]
+}
